@@ -12,7 +12,13 @@ function Article (opts) {
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
 
+  $newArticle.data('title', this.title);
   $newArticle.data('category', this.category);
+  $newArticle.data('author', this.author);
+  $newArticle.data('authorUrl', this.authorUrl);
+  $newArticle.data('publishedOn', this.publishedOn);
+  $newArticle.data('body', this.body);
+
 
   // TODO: Use jQuery to fill in the template with properties
   // from this particular Article instance. We need to fill in:
@@ -28,6 +34,8 @@ Article.prototype.toHtml = function() {
   $newArticle.append('<hr>');
 
   // TODO: This cloned article is no longer a template, so we should remove that class...
+
+  $newArticle.removeClass('template');
 
   return $newArticle;
 }
